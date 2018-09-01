@@ -1,0 +1,40 @@
+{{diagnostic}}
+<div class="container">
+  <h1>Hero Form</h1>
+  <!-- heroForm 变量是一个到 NgForm 指令的引用，它代表该表单的整体。 -->
+  <!-- NgForm 指令
+什么是 NgForm 指令？ 但你明明没有添加过NgForm指令啊！
+
+Angular 替你做了。Angular 会在 <form> 标签上自动创建并附加一个 NgForm 指令。
+
+NgForm 指令为 form 增补了一些额外特性。 它会控制那些带有 ngModel 指令和 name 属性的元素，监听他们的属性（包括其有效性）。 它还有自己的 valid 属性，这个属性只有在它包含的每个控件都有效时才是真。 
+-->
+  <!-- 每个 input 元素都有 id 属性，label 元素的 for 属性用它来匹配到对应的输入控件。 -->
+  <!-- 每个 input 元素都有 name 属性，Angular 表单用它注册控件。 -->
+  <form #hreoForm='ngForm'>
+    <div class="form-group ">
+      <label for="name">Name:</label>
+      <!-- 在ng2表单中使用ngModel需要注意,必须带有name属性或者使用 [ngModelOptions]=”{standalone: true}”，二选其一 -->
+      <input type="text" class="form-control" id='name' [(ngModel)]="model.name" name="name" required>
+      TODO: remove this: {{model.name}}
+    </div>
+
+    <div class="form-group">
+      <label for="alterEgo">Alter Ego:</label>
+      <input type="text" class="form-control" id='alterEgo' name="alterEgo" [(ngModel)]="model.alterEgo">
+    </div>
+
+
+    <div class="form-group">
+      <label for="power">Hero Power</label>
+      <select class="form-control" id="power" required name='power' [(ngModel)]="model.power">
+        <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn  btn-success">
+      Submit
+
+    </button>
+  </form>
+</div>
